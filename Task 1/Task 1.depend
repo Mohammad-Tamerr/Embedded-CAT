@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1708274348 source:d:\embedded_cat\task 1\task 1\task.c
+	<stdio.h>
+	<stdlib.h>
+	"Task.h"
+
+1708275079 d:\embedded_cat\task 1\task 1\task.h
+
+1708275019 source:d:\embedded_cat\task 1\task 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Task.h"
+
