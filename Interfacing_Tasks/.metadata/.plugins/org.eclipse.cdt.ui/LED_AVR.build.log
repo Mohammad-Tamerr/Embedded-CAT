@@ -1,0 +1,19 @@
+07:14:53 **** Incremental Build of configuration Debug for project LED_AVR ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:24: warning: implicit declaration of function '_delay_ms'
+Finished building: ../main.c
+ 
+Building target: LED_AVR.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,LED_AVR.map -mmcu=atmega16 -o "LED_AVR.elf"  ./main.o   
+./main.o: In function `main':
+../main.c:24: undefined reference to `_delay_ms'
+../main.c:28: undefined reference to `_delay_ms'
+make: *** [LED_AVR.elf] Error 1
+
+07:14:53 Build Finished (took 391ms)
+
