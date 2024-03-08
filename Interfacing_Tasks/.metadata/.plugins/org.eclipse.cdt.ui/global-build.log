@@ -1,14 +1,7 @@
-23:56:57 **** Incremental Build of configuration Debug for project COTS ****
+01:40:48 **** Incremental Build of configuration Debug for project COTS ****
 make all 
-Building file: ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.d" -MT"HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o" -c -o "HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o" "../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c"
-In file included from ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c:12:
-d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c
- 
 Building target: COTS.elf
 Invoking: AVR C Linker
-avr-gcc -Wl,-Map,COTS.map -mmcu=atmega32 -o "COTS.elf"  ./MCAL/DIO/DIO_program.o  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o  ./HAL/LED\ DRIVER/LED_program.o   
+avr-gcc -Wl,-Map,COTS.map -mmcu=atmega32 -o "COTS.elf"  ./MCAL/DIO/DIO_program.o  ./HAL/SWITCH_DRIVER/SWITCH_program.o  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o  ./HAL/LED\ DRIVER/LED_program.o   
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
 make: *** [COTS.elf] Error 1
