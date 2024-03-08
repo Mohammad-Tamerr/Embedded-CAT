@@ -1,0 +1,13 @@
+/*
+ * SEVEN_SEG_interface.h
+ *
+ *  Created on: Mar 8, 2024
+ *      Author: dell
+ */
+
+#ifndef HAL_SEVEN_SEG_DRIVER_SEVEN_SEG_INTERFACE_H_
+#define HAL_SEVEN_SEG_DRIVER_SEVEN_SEG_INTERFACE_H_
+
+
+
+#endif /* HAL_SEVEN_SEG_DRIVER_SEVEN_SEG_INTERFACE_H_ */

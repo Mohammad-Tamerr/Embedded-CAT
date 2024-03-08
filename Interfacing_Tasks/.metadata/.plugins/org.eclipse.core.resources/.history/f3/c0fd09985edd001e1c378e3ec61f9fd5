@@ -1,0 +1,55 @@
+/*
+ * DIO_program.c
+ *
+ *	    Created on: Mar 8, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#include "../../LIB/BIT_MATH.h"
+#include "../../LIB/STD_TYPES.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+
+
+
+
+u8 DIO_Set_Pin_Direction(u8 port_copy , u8 pin_copy , u8 direction_copy  )
+{
+	u8 Local_Error_Status = FUNCTION_IS_OK ;
+
+
+
+
+	return Local_Error_Status ;
+}
+
+u8 DIO_Set_Port_Direction(u8 port_copy , u8 direction_copy  )
+{
+	u8 Local_Error_Status = FUNCTION_IS_OK ;
+
+	return Local_Error_Status ;
+
+}
+
+u8 DIO_Set_Pin_Value(u8 port_copy , u8 pin_copy , u8 direction_copy  )
+{
+	u8 Local_Error_Status =  FUNCTION_IS_OK ;
+
+	return Local_Error_Status ;
+
+}
+
+u8 DIO_Set_Port_Value(u8 port_copy  , u8 direction_copy  )
+{
+	u8 Local_Error_Status =  FUNCTION_IS_OK ;
+
+	return Local_Error_Status ;
+
+}
+
+u8 DIO_Get_Pin_Direction(u8 port_copy , u8 pin_copy , u8* Pin_Value  )
+{
+	u8 Local_Error_Status =  FUNCTION_IS_OK ;
+
+	return Local_Error_Status ;
+
+}
