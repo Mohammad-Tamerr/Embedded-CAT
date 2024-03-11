@@ -1,43 +1,5 @@
-05:58:51 **** Clean-only build of configuration Debug for project COTS ****
-make clean 
-rm -rf  ./MCAL/DIO/DIO_program.o  ./HAL/SWITCH_DRIVER/SWITCH_program.o  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o  ./HAL/LED_DRIVER/LED_program.o  sizedummy  COTS.lss  ./MCAL/DIO/DIO_program.d  ./HAL/SWITCH_DRIVER/SWITCH_program.d  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.d  ./HAL/LED_DRIVER/LED_program.d  COTS.elf
- 
-05:58:51 **** Build of configuration Debug for project COTS ****
+06:02:13 **** Incremental Build of configuration Debug for project COTS ****
 make all 
-Building file: ../MCAL/DIO/DIO_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"MCAL/DIO/DIO_program.d" -MT"MCAL/DIO/DIO_program.o" -c -o "MCAL/DIO/DIO_program.o" "../MCAL/DIO/DIO_program.c"
-Finished building: ../MCAL/DIO/DIO_program.c
- 
-Building file: ../HAL/SWITCH_DRIVER/SWITCH_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/SWITCH_DRIVER/SWITCH_program.d" -MT"HAL/SWITCH_DRIVER/SWITCH_program.o" -c -o "HAL/SWITCH_DRIVER/SWITCH_program.o" "../HAL/SWITCH_DRIVER/SWITCH_program.c"
-In file included from ../HAL/SWITCH_DRIVER/SWITCH_program.c:12:
-d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../HAL/SWITCH_DRIVER/SWITCH_program.c
- 
-Building file: ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.d" -MT"HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o" -c -o "HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o" "../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c"
-In file included from ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c:12:
-d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.c
- 
-Building file: ../HAL/LED_DRIVER/LED_program.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"HAL/LED_DRIVER/LED_program.d" -MT"HAL/LED_DRIVER/LED_program.o" -c -o "HAL/LED_DRIVER/LED_program.o" "../HAL/LED_DRIVER/LED_program.c"
-Finished building: ../HAL/LED_DRIVER/LED_program.c
- 
-Building target: libCOTS.a
-Invoking: AVR Archiver
-avr-ar -r  "libCOTS.a"  ./MCAL/DIO/DIO_program.o  ./HAL/SWITCH_DRIVER/SWITCH_program.o  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o  ./HAL/LED_DRIVER/LED_program.o  
-d:\Interfacing_NTI\IMT_SDK_Win_64\WinAVR\bin\avr-ar.exe: creating libCOTS.a
-Finished building target: libCOTS.a
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S libCOTS.a  >"libCOTS.lss"
-Finished building: libCOTS.lss
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 libCOTS.a
 AVR Memory Usage
