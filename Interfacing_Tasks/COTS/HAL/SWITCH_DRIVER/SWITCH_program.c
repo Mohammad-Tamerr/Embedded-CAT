@@ -7,8 +7,8 @@
 
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
-#include "../../MCAL/DIO/DIO_interface.h"
 #include "../../MCAL/DIO/DIO_register.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include <util/delay.h>
 
 #define FUNCTION_IS_OK 		  0

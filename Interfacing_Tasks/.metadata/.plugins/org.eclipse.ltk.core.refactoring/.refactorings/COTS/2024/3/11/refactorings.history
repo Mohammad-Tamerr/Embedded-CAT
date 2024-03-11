@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;COTS/HAL/LED DRIVER&apos; to &apos;LED_DRIVER&apos;" description="Rename resource &apos;LED DRIVER&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HAL/LED DRIVER" name="LED_DRIVER" stamp="1710126777905" updateReferences="true"/>
+</session>
