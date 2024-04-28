@@ -8,8 +8,9 @@ ASM_SRCS :=
 C_SRCS := 
 S_UPPER_SRCS := 
 O_SRCS := 
+FLASH_IMAGE := 
+ELFS := 
 OBJS := 
-ARCHIVES := 
 ASM_DEPS := 
 S_DEPS := 
 SIZEDUMMY := 
@@ -19,8 +20,12 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+APP/Calculator_Project \
+HAL/KEYPAD_DRIVER \
+HAL/LCD_DRIVER \
 HAL/LED_DRIVER \
 HAL/SEVEN_SEG_DRIVER \
 HAL/SWITCH_DRIVER \
 MCAL/DIO \
+MCAL/PORT \
 

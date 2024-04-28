@@ -4,14 +4,18 @@
 
 -include ../makefile.init
 
-RM := rm -f
+RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include MCAL/PORT/subdir.mk
 -include MCAL/DIO/subdir.mk
 -include HAL/SWITCH_DRIVER/subdir.mk
 -include HAL/SEVEN_SEG_DRIVER/subdir.mk
 -include HAL/LED_DRIVER/subdir.mk
+-include HAL/LCD_DRIVER/subdir.mk
+-include HAL/KEYPAD_DRIVER/subdir.mk
+-include APP/Calculator_Project/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -34,41 +38,50 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-libCOTS.lss \
+COTS.lss \
+
+FLASH_IMAGE += \
+COTS.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: libCOTS.a secondary-outputs
+all: COTS.elf secondary-outputs
 
 # Tool invocations
-libCOTS.a: $(OBJS)
+COTS.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: AVR Archiver'
-	avr-ar -r  "libCOTS.a" $(OBJS) $(LIBS)
+	@echo 'Invoking: AVR C Linker'
+	avr-gcc -Wl,-Map,COTS.map -mmcu=atmega32 -o "COTS.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-libCOTS.lss: libCOTS.a
+COTS.lss: COTS.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S libCOTS.a  >"libCOTS.lss"
+	-avr-objdump -h -S COTS.elf  >"COTS.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: libCOTS.a
+COTS.hex: COTS.elf
+	@echo 'Create Flash image (ihex format)'
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex COTS.elf  "COTS.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+sizedummy: COTS.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 libCOTS.a
+	-avr-size --format=avr --mcu=atmega32 COTS.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(ARCHIVES)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) libCOTS.a
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) COTS.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

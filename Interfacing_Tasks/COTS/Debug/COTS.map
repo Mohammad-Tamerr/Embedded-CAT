@@ -1,5 +1,9 @@
 Archive member included because of file (symbol)
 
+d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              ./APP/Calculator_Project/main.o (__mulsi3)
+d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                              ./HAL/LCD_DRIVER/LCD_program.o (__divmodsi4)
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -20,6 +24,8 @@ d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(
                               d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__fixsfsi)
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
                               d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o) (__thenan_sf)
+d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                              d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o) (__udivmodsi4)
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
                               d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o) (__prologue_saves__)
 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
@@ -45,10 +51,15 @@ signature        0x00840000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD ./MCAL/PORT/PORT_program.o
 LOAD ./MCAL/DIO/DIO_program.o
 LOAD ./HAL/SWITCH_DRIVER/SWITCH_program.o
 LOAD ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
 LOAD ./HAL/LED_DRIVER/LED_program.o
+LOAD ./HAL/LCD_DRIVER/LCD_program.o
+LOAD ./HAL/KEYPAD_DRIVER/KPD_program.o
+LOAD ./APP/Calculator_Project/calc.o
+LOAD ./APP/Calculator_Project/main.o
 LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
 LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -143,7 +154,7 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1bd0
+.text           0x00000000     0x2c9c
  *(.vectors)
  .vectors       0x00000000       0x54 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -218,10 +229,17 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
                 0x0000007e                __vector_16
                 0x0000007e                __vector_18
                 0x0000007e                __vector_20
+ .text          0x00000082        0x0 ./MCAL/PORT/PORT_program.o
  .text          0x00000082        0x0 ./MCAL/DIO/DIO_program.o
  .text          0x00000082        0x0 ./HAL/SWITCH_DRIVER/SWITCH_program.o
  .text          0x00000082        0x0 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
  .text          0x00000082        0x0 ./HAL/LED_DRIVER/LED_program.o
+ .text          0x00000082        0x0 ./HAL/LCD_DRIVER/LCD_program.o
+ .text          0x00000082        0x0 ./HAL/KEYPAD_DRIVER/KPD_program.o
+ .text          0x00000082        0x0 ./APP/Calculator_Project/calc.o
+ .text          0x00000082        0x0 ./APP/Calculator_Project/main.o
+ .text          0x00000082        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00000082        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
  .text          0x00000082        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .text          0x00000082        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .text          0x00000082       0x58 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
@@ -240,6 +258,7 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
  .text          0x00000742       0xa8 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
                 0x00000742                __fixsfsi
  .text          0x000007ea        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+ .text          0x000007ea        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
  .text          0x000007ea        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
  .text          0x000007ea        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
  .text          0x000007ea      0x1aa d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
@@ -250,60 +269,107 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
                 0x00000a84                __fpcmp_parts_f
                 0x00000b36                . = ALIGN (0x2)
  *(.text.*)
+ .text.port_void_init
+                0x00000b36       0x48 ./MCAL/PORT/PORT_program.o
+                0x00000b36                port_void_init
  .text.DIO_Set_Pin_Direction
-                0x00000b36      0x21e ./MCAL/DIO/DIO_program.o
-                0x00000b36                DIO_Set_Pin_Direction
+                0x00000b7e      0x21e ./MCAL/DIO/DIO_program.o
+                0x00000b7e                DIO_Set_Pin_Direction
  .text.DIO_Set_Port_Direction
-                0x00000d54       0x90 ./MCAL/DIO/DIO_program.o
-                0x00000d54                DIO_Set_Port_Direction
+                0x00000d9c       0x90 ./MCAL/DIO/DIO_program.o
+                0x00000d9c                DIO_Set_Port_Direction
  .text.DIO_Set_Pin_Value
-                0x00000de4      0x224 ./MCAL/DIO/DIO_program.o
-                0x00000de4                DIO_Set_Pin_Value
+                0x00000e2c      0x224 ./MCAL/DIO/DIO_program.o
+                0x00000e2c                DIO_Set_Pin_Value
  .text.DIO_Set_Port_Value
-                0x00001008       0x90 ./MCAL/DIO/DIO_program.o
-                0x00001008                DIO_Set_Port_Value
+                0x00001050       0x90 ./MCAL/DIO/DIO_program.o
+                0x00001050                DIO_Set_Port_Value
  .text.DIO_Get_Pin_VALUE
-                0x00001098      0x130 ./MCAL/DIO/DIO_program.o
-                0x00001098                DIO_Get_Pin_VALUE
+                0x000010e0      0x130 ./MCAL/DIO/DIO_program.o
+                0x000010e0                DIO_Get_Pin_VALUE
  .text.Switch_Status
-                0x000011c8      0x2a4 ./HAL/SWITCH_DRIVER/SWITCH_program.o
-                0x000011c8                Switch_Status
+                0x00001210      0x2a4 ./HAL/SWITCH_DRIVER/SWITCH_program.o
+                0x00001210                Switch_Status
  .text.Seven_Seg_Init
-                0x0000146c       0x8a ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x0000146c                Seven_Seg_Init
+                0x000014b4       0x8a ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x000014b4                Seven_Seg_Init
  .text.Seven_Seg_TurnON
-                0x000014f6       0x62 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x000014f6                Seven_Seg_TurnON
+                0x0000153e       0x62 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x0000153e                Seven_Seg_TurnON
  .text.Seven_Seg_TurnOff
-                0x00001558       0x44 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x00001558                Seven_Seg_TurnOff
+                0x000015a0       0x44 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x000015a0                Seven_Seg_TurnOff
  .text.Seven_Seg_CountUp
-                0x0000159c      0x140 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x0000159c                Seven_Seg_CountUp
+                0x000015e4      0x140 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x000015e4                Seven_Seg_CountUp
  .text.Seven_Seg_Countdown
-                0x000016dc      0x140 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x000016dc                Seven_Seg_Countdown
- .text.LED_ON   0x0000181c      0x116 ./HAL/LED_DRIVER/LED_program.o
-                0x0000181c                LED_ON
- .text.LED_OFF  0x00001932      0x120 ./HAL/LED_DRIVER/LED_program.o
-                0x00001932                LED_OFF
+                0x00001724      0x140 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x00001724                Seven_Seg_Countdown
+ .text.LED_ON   0x00001864      0x116 ./HAL/LED_DRIVER/LED_program.o
+                0x00001864                LED_ON
+ .text.LED_OFF  0x0000197a      0x120 ./HAL/LED_DRIVER/LED_program.o
+                0x0000197a                LED_OFF
  .text.LED_ALL_PORT_ON
-                0x00001a52       0x8a ./HAL/LED_DRIVER/LED_program.o
-                0x00001a52                LED_ALL_PORT_ON
+                0x00001a9a       0x8a ./HAL/LED_DRIVER/LED_program.o
+                0x00001a9a                LED_ALL_PORT_ON
  .text.LED_ALL_PORT_OFF
-                0x00001adc       0x82 ./HAL/LED_DRIVER/LED_program.o
-                0x00001adc                LED_ALL_PORT_OFF
- .text.libgcc   0x00001b5e        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00001b5e        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00001b5e       0x38 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00001b5e                __prologue_saves__
- .text.libgcc   0x00001b96       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00001b96                __epilogue_restores__
-                0x00001bcc                . = ALIGN (0x2)
+                0x00001b24       0x82 ./HAL/LED_DRIVER/LED_program.o
+                0x00001b24                LED_ALL_PORT_OFF
+ .text.lcd_send_command
+                0x00001ba6      0x13c ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001ba6                lcd_send_command
+ .text.lcd_send_data
+                0x00001ce2      0x13c ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001ce2                lcd_send_data
+ .text.lcd_initialization
+                0x00001e1e      0x11c ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001e1e                lcd_initialization
+ .text.lcd_send_string
+                0x00001f3a       0x68 ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001f3a                lcd_send_string
+ .text.lcd_go_to_xy
+                0x00001fa2       0x50 ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001fa2                lcd_go_to_xy
+ .text.lcd_store_special_character
+                0x00001ff2       0x7e ./HAL/LCD_DRIVER/LCD_program.o
+                0x00001ff2                lcd_store_special_character
+ .text.lcd_show_special_character
+                0x00002070       0x2c ./HAL/LCD_DRIVER/LCD_program.o
+                0x00002070                lcd_show_special_character
+ .text.lcd_show_number
+                0x0000209c      0x144 ./HAL/LCD_DRIVER/LCD_program.o
+                0x0000209c                lcd_show_number
+ .text.lcd_clear
+                0x000021e0       0x14 ./HAL/LCD_DRIVER/LCD_program.o
+                0x000021e0                lcd_clear
+ .text.KPD_GetPressedkey
+                0x000021f4       0xf0 ./HAL/KEYPAD_DRIVER/KPD_program.o
+                0x000021f4                KPD_GetPressedkey
+ .text.START_CALC
+                0x000022e4      0x406 ./APP/Calculator_Project/calc.o
+                0x000022e4                START_CALC
+ .text.RESET_CALC
+                0x000026ea       0x72 ./APP/Calculator_Project/calc.o
+                0x000026ea                RESET_CALC
+ .text.main     0x0000275c      0x416 ./APP/Calculator_Project/main.o
+                0x0000275c                main
+ .text.libgcc   0x00002b72       0x3e d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00002b72                __mulsi3
+ .text.libgcc   0x00002bb0       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                0x00002bb0                __divmodsi4
+ .text.libgcc   0x00002be6        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00002be6        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00002be6       0x44 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002be6                __udivmodsi4
+ .text.libgcc   0x00002c2a       0x38 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00002c2a                __prologue_saves__
+ .text.libgcc   0x00002c62       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00002c62                __epilogue_restores__
+                0x00002c98                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001bcc        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001bcc                exit
-                0x00001bcc                _exit
+ .fini9         0x00002c98        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00002c98                exit
+                0x00002c98                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -322,80 +388,102 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001bcc        0x4 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00002c98        0x4 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001bd0                _etext = .
+                0x00002c9c                _etext = .
 
-.data           0x00800060       0x12 load address 0x00001bd0
+.data           0x00800060       0x62 load address 0x00002c9c
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 ./MCAL/PORT/PORT_program.o
  .data          0x00800060        0x0 ./MCAL/DIO/DIO_program.o
  .data          0x00800060        0x0 ./HAL/SWITCH_DRIVER/SWITCH_program.o
  .data          0x00800060        0x0 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
  .data          0x00800060        0x0 ./HAL/LED_DRIVER/LED_program.o
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
- .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
- .data          0x00800060        0x8 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
-                0x00800060                __thenan_sf
- .data          0x00800068        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
- .data          0x00800068        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
- .data          0x00800068        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
- .data          0x00800068        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
- .data          0x00800068        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
+ .data          0x00800060        0x0 ./HAL/LCD_DRIVER/LCD_program.o
+ .data          0x00800060        0x0 ./HAL/KEYPAD_DRIVER/KPD_program.o
+ .data          0x00800060       0x20 ./APP/Calculator_Project/calc.o
+ .data          0x00800080       0x18 ./APP/Calculator_Project/main.o
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
+ .data          0x00800098        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
+ .data          0x00800098        0x8 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+                0x00800098                __thenan_sf
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
+ .data          0x008000a0        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.data*)
  .data.seven_seg_arr_anode
-                0x00800068        0xa ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
-                0x00800068                seven_seg_arr_anode
+                0x008000a0        0xa ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+                0x008000a0                seven_seg_arr_anode
+ .data.Local_KPDROWSArr.1288
+                0x008000aa        0x4 ./HAL/KEYPAD_DRIVER/KPD_program.o
+ .data.Local_KPDColumnArr.1287
+                0x008000ae        0x4 ./HAL/KEYPAD_DRIVER/KPD_program.o
+ .data.Local_KPDArr.1286
+                0x008000b2       0x10 ./HAL/KEYPAD_DRIVER/KPD_program.o
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800072                . = ALIGN (0x2)
-                0x00800072                _edata = .
-                0x00800072                PROVIDE (__data_end, .)
+                0x008000c2                . = ALIGN (0x2)
+                0x008000c2                _edata = .
+                0x008000c2                PROVIDE (__data_end, .)
 
-.bss            0x00800072        0x0
-                0x00800072                PROVIDE (__bss_start, .)
+.bss            0x008000c2        0x0
+                0x008000c2                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x00800072        0x0 ./MCAL/DIO/DIO_program.o
- .bss           0x00800072        0x0 ./HAL/SWITCH_DRIVER/SWITCH_program.o
- .bss           0x00800072        0x0 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
- .bss           0x00800072        0x0 ./HAL/LED_DRIVER/LED_program.o
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
- .bss           0x00800072        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x008000c2        0x0 ./MCAL/PORT/PORT_program.o
+ .bss           0x008000c2        0x0 ./MCAL/DIO/DIO_program.o
+ .bss           0x008000c2        0x0 ./HAL/SWITCH_DRIVER/SWITCH_program.o
+ .bss           0x008000c2        0x0 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+ .bss           0x008000c2        0x0 ./HAL/LED_DRIVER/LED_program.o
+ .bss           0x008000c2        0x0 ./HAL/LCD_DRIVER/LCD_program.o
+ .bss           0x008000c2        0x0 ./HAL/KEYPAD_DRIVER/KPD_program.o
+ .bss           0x008000c2        0x0 ./APP/Calculator_Project/calc.o
+ .bss           0x008000c2        0x0 ./APP/Calculator_Project/main.o
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
+ .bss           0x008000c2        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.bss*)
  *(COMMON)
-                0x00800072                PROVIDE (__bss_end, .)
-                0x00001bd0                __data_load_start = LOADADDR (.data)
-                0x00001be2                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008000c2                PROVIDE (__bss_end, .)
+                0x00002c9c                __data_load_start = LOADADDR (.data)
+                0x00002cfe                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800072        0x0
-                0x00800072                PROVIDE (__noinit_start, .)
+.noinit         0x008000c2        0x0
+                0x008000c2                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800072                PROVIDE (__noinit_end, .)
-                0x00800072                _end = .
-                0x00800072                PROVIDE (__heap_start, .)
+                0x008000c2                PROVIDE (__noinit_end, .)
+                0x008000c2                _end = .
+                0x008000c2                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -413,19 +501,29 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x17b8
+.stab           0x00000000     0x2f64
  *(.stab)
- .stab          0x00000000      0x66c ./MCAL/DIO/DIO_program.o
- .stab          0x0000066c      0x5e8 ./HAL/SWITCH_DRIVER/SWITCH_program.o
+ .stab          0x00000000      0x1f8 ./MCAL/PORT/PORT_program.o
+ .stab          0x000001f8      0x660 ./MCAL/DIO/DIO_program.o
+                                0x66c (size before relaxing)
+ .stab          0x00000858      0x5e8 ./HAL/SWITCH_DRIVER/SWITCH_program.o
                                 0x5f4 (size before relaxing)
- .stab          0x00000c54      0x6e4 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
+ .stab          0x00000e40      0x6e4 ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o
                                 0x87c (size before relaxing)
- .stab          0x00001338      0x480 ./HAL/LED_DRIVER/LED_program.o
+ .stab          0x00001524      0x480 ./HAL/LED_DRIVER/LED_program.o
                                 0x48c (size before relaxing)
+ .stab          0x000019a4      0x930 ./HAL/LCD_DRIVER/LCD_program.o
+                                0xac8 (size before relaxing)
+ .stab          0x000022d4      0x2e8 ./HAL/KEYPAD_DRIVER/KPD_program.o
+                                0x480 (size before relaxing)
+ .stab          0x000025bc      0x5ac ./APP/Calculator_Project/calc.o
+                                0x744 (size before relaxing)
+ .stab          0x00002b68      0x3fc ./APP/Calculator_Project/main.o
+                                0x618 (size before relaxing)
 
-.stabstr        0x00000000      0xae1
+.stabstr        0x00000000     0x104d
  *(.stabstr)
- .stabstr       0x00000000      0xae1 ./MCAL/DIO/DIO_program.o
+ .stabstr       0x00000000     0x104d ./MCAL/PORT/PORT_program.o
 
 .stab.excl
  *(.stab.excl)

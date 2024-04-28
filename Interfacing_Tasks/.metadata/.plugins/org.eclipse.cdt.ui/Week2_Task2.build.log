@@ -1,4 +1,4 @@
-01:39:06 **** Build of configuration Debug for project Week2_Task2 ****
+16:42:12 **** Build of configuration Debug for project Week2_Task2 ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 Week2_Task2.elf
@@ -16,5 +16,5 @@ Data:         18 bytes (0.9% Full)
 Finished building: sizedummy
  
 
-01:39:07 Build Finished (took 133ms)
+16:42:12 Build Finished (took 189ms)
 

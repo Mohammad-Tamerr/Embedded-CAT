@@ -4,7 +4,7 @@
 
 -include ../makefile.init
 
-RM := rm -rf
+RM := rm -f
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -30,50 +30,41 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-LED.lss \
-
-FLASH_IMAGE += \
-LED.hex \
+libLED.lss \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: LED.elf secondary-outputs
+all: libLED.a secondary-outputs
 
 # Tool invocations
-LED.elf: $(OBJS) $(USER_OBJS)
+libLED.a: $(OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,LED.map -mmcu=atmega32 -o "LED.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: AVR Archiver'
+	avr-ar -r  "libLED.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-LED.lss: LED.elf
+libLED.lss: libLED.a
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S LED.elf  >"LED.lss"
+	-avr-objdump -h -S libLED.a  >"libLED.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LED.hex: LED.elf
-	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex LED.elf  "LED.hex"
-	@echo 'Finished building: $@'
-	@echo ' '
-
-sizedummy: LED.elf
+sizedummy: libLED.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 LED.elf
+	-avr-size --format=avr --mcu=atmega32 libLED.a
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) LED.elf
+	-$(RM) $(OBJS)$(ARCHIVES)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) libLED.a
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

@@ -1,0 +1,31 @@
+/*
+ * main.c
+ *
+ *  Created on: Apr 26, 2024
+ *      Author: Mohammad Tamer
+ */
+
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../HAL/LCD_DRIVER/LCD_interface.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+
+#include "../../HAL/KEYPAD_DRIVER/KPD_interface.h"
+
+#include "../../HAL/LCD_DRIVER/LCD_config.h"
+
+void main()
+{
+	port_void_init();
+	//lcd_initialization();
+	while (1)
+	{
+		DIO_Set_Pin_Direction( DIO_PORT_A, DIO_PIN_0  , DIO_PORT_OUTPUT);
+		DIO_Set_Pin_Value( DIO_PORT_A ,  DIO_PIN_0 ,   DIO_PORT_HIGH );
+
+	}
+}

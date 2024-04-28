@@ -44,7 +44,7 @@ u8 DIO_Set_Pin_Value(u8 port_copy , u8 pin_copy , u8  value_copy );
 
 u8 DIO_Set_Port_Value(u8 port_copy  , u8 value_copy  );
 
-u8 DIO_Get_Pin_Value(u8 port_copy , u8 pin_copy , u8* Pin_Value );
+u8 DIO_Get_Pin_VALUE(u8 port_copy , u8 pin_copy , u8* Pin_Value );
 
 
 #endif /* MCAL_DIO_DIO_INTERFACE_H_ */
