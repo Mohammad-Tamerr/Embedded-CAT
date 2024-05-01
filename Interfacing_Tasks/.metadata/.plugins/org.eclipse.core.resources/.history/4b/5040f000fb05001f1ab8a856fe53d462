@@ -1,0 +1,14 @@
+/*
+ * KPD_private.h
+ *
+ *  Created on: Apr 23, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef KEYPAD_DRIVER_PRIVATE_H_
+#define KEYPAD_DRIVER_PRIVATE_H_
+
+#define COLUMN_NUM   	4
+#define ROW_NUM   		4
+
+#endif /* KEYPAD_DRIVER_PRIVATE_H_ */

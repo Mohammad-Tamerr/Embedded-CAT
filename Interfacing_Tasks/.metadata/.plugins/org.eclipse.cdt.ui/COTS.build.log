@@ -1,11 +1,11 @@
-01:14:28 **** Incremental Build of configuration Debug for project COTS ****
+21:02:29 **** Incremental Build of configuration Debug for project COTS ****
 make all 
-Building file: ../APP/Calculator_Project/calc.c
+Building file: ../APP/Calculator_Project/main.c
 Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/Calculator_Project/calc.d" -MT"APP/Calculator_Project/calc.o" -c -o "APP/Calculator_Project/calc.o" "../APP/Calculator_Project/calc.c"
-In file included from ../APP/Calculator_Project/calc.c:17:
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/Calculator_Project/main.d" -MT"APP/Calculator_Project/main.o" -c -o "APP/Calculator_Project/main.o" "../APP/Calculator_Project/main.c"
+In file included from ../APP/Calculator_Project/main.c:17:
 d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../APP/Calculator_Project/calc.c
+Finished building: ../APP/Calculator_Project/main.c
  
 Building target: COTS.elf
 Invoking: AVR C Linker
@@ -26,15 +26,15 @@ AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:   11518 bytes (35.2% Full)
+Program:   12508 bytes (38.2% Full)
 (.text + .data + .bootloader)
 
-Data:         98 bytes (4.8% Full)
+Data:        354 bytes (17.3% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-01:14:28 Build Finished (took 489ms)
+21:02:30 Build Finished (took 966ms)
 

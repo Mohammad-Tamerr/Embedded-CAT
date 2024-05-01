@@ -191,6 +191,21 @@ void lcd_show_number(s32 number_copy)
     }
 }
 
+void lcd_show_float(float number)
+{
+    // Convert the floating-point number to integer and fractional parts
+    int integer_part = (int)number;
+    int fractional_part = (int)((number - integer_part) * 100); // Assume 2 decimal places
+
+    // Display the integer part
+    lcd_show_number(integer_part);
+
+    // Display the decimal point
+    lcd_send_data('.');
+
+    // Display the fractional part
+    lcd_show_number(fractional_part);
+}
 
 void lcd_clear (void)
 {

@@ -131,10 +131,10 @@ u8 DIO_Get_Pin_VALUE(u8 port_copy , u8 pin_copy , u8* Pin_Value  )
 	{
 		switch(port_copy)
 		{
-			case DIO_PORT_A: (*Pin_Value) = GET_BIT(PIN_A, port_copy) ;    break ;
-			case DIO_PORT_B: (*Pin_Value) = GET_BIT(PIN_B, port_copy) ;    break ;
-			case DIO_PORT_C: (*Pin_Value) = GET_BIT(PIN_C, port_copy) ;    break ;
-			case DIO_PORT_D: (*Pin_Value) = GET_BIT(PIN_D, port_copy) ;    break ;
+			case DIO_PORT_A: (*Pin_Value) = GET_BIT(PIN_A, pin_copy) ;    break ;
+			case DIO_PORT_B: (*Pin_Value) = GET_BIT(PIN_B, pin_copy) ;    break ;
+			case DIO_PORT_C: (*Pin_Value) = GET_BIT(PIN_C, pin_copy) ;    break ;
+			case DIO_PORT_D: (*Pin_Value) = GET_BIT(PIN_D, pin_copy) ;    break ;
 			default : Local_Error_Status = FUNCTION_NOT_OK ;
 		}
 	}

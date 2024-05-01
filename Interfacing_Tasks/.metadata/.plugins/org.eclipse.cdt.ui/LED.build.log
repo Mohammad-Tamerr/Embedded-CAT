@@ -1,15 +1,5 @@
-16:39:22 **** Build of configuration Debug for project LED ****
+13:29:41 **** Incremental Build of configuration Debug for project LED ****
 make all 
-Building target: libLED.a
-Invoking: AVR Archiver
-avr-ar -r  "libLED.a"  ./main.o  
-d:\Interfacing_NTI\IMT_SDK_Win_64\WinAVR\bin\avr-ar.exe: creating libLED.a
-Finished building target: libLED.a
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S libLED.a  >"libLED.lss"
-Finished building: libLED.lss
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 libLED.a
 AVR Memory Usage
@@ -26,5 +16,5 @@ Data:          0 bytes (0.0% Full)
 Finished building: sizedummy
  
 
-16:39:22 Build Finished (took 487ms)
+13:29:41 Build Finished (took 219ms)
 

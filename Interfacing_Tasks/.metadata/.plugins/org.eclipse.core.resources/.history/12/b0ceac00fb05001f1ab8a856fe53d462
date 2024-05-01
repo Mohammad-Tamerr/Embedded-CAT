@@ -1,0 +1,15 @@
+/*
+ * KPD_interface.h
+ *
+ *  Created on: Apr 23, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef KEYPAD_DRIVER_INTERFACE_H_
+#define KEYPAD_DRIVER_INTERFACE_H_
+
+#include "../../lib/STD_TYPES.h"
+
+u8 KPD_GetPressedkey(void);
+
+#endif /* KEYPAD_DRIVER_INTERFACE_H_ */

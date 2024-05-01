@@ -8,6 +8,15 @@ RM := rm -f
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include MCAL/PORT/subdir.mk
+-include MCAL/DIO/subdir.mk
+-include HAL/SWITCH_DRIVER/subdir.mk
+-include HAL/SEVEN_SEG_DRIVER/subdir.mk
+-include HAL/LED_DRIVER/subdir.mk
+-include HAL/LCD_DRIVER/subdir.mk
+-include HAL/KEYPAD_DRIVER/subdir.mk
+-include APP/test/subdir.mk
+-include APP/Calculator_Project/subdir.mk
 -include subdir.mk
 -include objects.mk
 

@@ -1,27 +1,27 @@
+
 /*
  * PORT_program.c
+
  *
  *  Created on: Apr 23, 2024
- *      Author: Mohammad Tamer
+ *      Author: user
  */
 
-#include "../../LIB/BIT_MATH.h"
-#include "../../LIB/STD_TYPES.h"
-
+#include "../../lib/std_types.h"
 #include "PORT_config.h"
 #include "PORT_private.h"
 #include "PORT_interface.h"
 #include "PORT_register.h"
 
-void port_void_init(void)
+void PORT_voidInit(void)
 {
-		DDR_A=PORTA_DIR;
-		DDR_B=PORTB_DIR;
-		DDR_C=PORTC_DIR;
-		DDR_D=PORTD_DIR;
+	DDRA=PORTA_DIR;
+	DDRB=PORTB_DIR;
+	DDRC=PORTC_DIR;
+	DDRD=PORTD_DIR;
 
-		PORT_A=PORTA_INIT_VALUE;
-		PORT_B=PORTB_INIT_VALUE;
-		PORT_C=PORTD_INIT_VALUE;
-		PORT_D=PORTC_INIT_VALUE;
+	PORTA=PORTA_INIT_VALUE;
+	PORTB=PORTB_INIT_VALUE;
+	PORTD=PORTD_INIT_VALUE;
+	PORTC=PORTC_INIT_VALUE;
 }
