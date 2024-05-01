@@ -1,0 +1,92 @@
+/*
+ * main.c
+ *
+ *  Created on: Apr 26, 2024
+ *      Author: Mohammad Tamer
+ */
+
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+
+#include "../../HAL/KEYPAD_DRIVER/KPD_interface.h"
+#include "../../HAL/LCD_DRIVER/LCD_interface.h"
+
+#include <util/delay.h>
+#include "calc.h"
+
+#define KPD_NO_PREESED_KEY      0xff
+#define NULL 0
+#define MAX_EXPRESSION_LENGTH 16
+
+int main() {
+    /* Assuming you have functions like lcd_clear(), lcd_putc(), lcd_puts(),
+       keypad_init(), keypad_getkey() from your provided libraries */
+
+    /* Initialize LCD and Keypad */
+	START_CALC();
+    char expression[MAX_EXPRESSION_LENGTH];
+    while (1) {
+        lcd_clear();
+        lcd_send_string("Enter expression:");
+        char key;
+        int i = 0;
+        while (1) {
+            key = KPD_GetPressedkey();
+            if (key != '\0' && key != '=' && i < MAX_EXPRESSION_LENGTH - 1) {
+                expression[i++] = key;
+                lcd_send_data(key);
+            } else if (key == '=') {
+                expression[i] = '\0';
+                break;
+            }
+        }
+
+        // Tokenize the expression
+        int result = 0;
+        char operation = '+';
+        int number;
+        char *token = strtok(expression, "+-*/");
+        if (token != NULL) {
+            result = atoi(token);
+        }
+        while (token != NULL) {
+            token = strtok(NULL, "+-*/");
+            if (token != NULL) {
+                number = atoi(token);
+                switch (operation) {
+                    case '+':
+                        result += number;
+                        break;
+                    case '-':
+                        result -= number;
+                        break;
+                    case '*':
+                        result *= number;
+                        break;
+                    case '/':
+                        if (number != 0) {
+                            result /= number;
+                        } else {
+                            LCD_voidClear();
+                            LCD_voidSendString("Error: Division by zero");
+                            _delay_ms(2000);
+                            break;
+                        }
+                        break;
+                }
+                operation = expression[i];
+            }
+        }
+        lcd_clear();
+        lcd_go_to_xy(0,0);
+        lcd_send_string("Result:");
+        lcd_go_to_xy(0,1);
+        lcd_send_string(itoa(result);
+        _delay_ms(2000);
+    }
+
+    return 0;
+}

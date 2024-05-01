@@ -25,11 +25,13 @@ void START_CALC(void)
 {
     PORT_voidInit();
     lcd_initialization();
+    lcd_go_to_xy(1, 4);
     lcd_send_string(WELCOME_MESSAGE_1);
     _delay_ms(1500);
     lcd_clear();
+    lcd_go_to_xy(0, 2);
     lcd_send_string(WELCOME_MESSAGE_2);
-    lcd_go_to_xy(1, 0);
+    lcd_go_to_xy(1, 3);
     lcd_send_string(WELCOME_MESSAGE_3);
     _delay_ms(1500);
     lcd_clear();

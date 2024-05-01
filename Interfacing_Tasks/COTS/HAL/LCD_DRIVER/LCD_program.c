@@ -16,8 +16,6 @@
 
 #include <util/delay.h>
 
-
-
 void lcd_send_command(u8 command_copy)
 {
 	/* Set RS PIN to Low to Send Command */
@@ -94,7 +92,6 @@ u8 lcd_send_string(const char* string_copy)
     }
     return local_error_status;
 }
-
 
 u8 lcd_go_to_xy (u8 x_dimension_copy ,u8 y_dimension_copy)
 {

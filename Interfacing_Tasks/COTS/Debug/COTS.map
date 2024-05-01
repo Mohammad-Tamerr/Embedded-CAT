@@ -162,7 +162,7 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2f7a
+.text           0x00000000     0x2f8a
  *(.vectors)
  .vectors       0x00000000       0x54 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -364,30 +364,30 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
                 0x00002560       0xfa ./HAL/KEYPAD_DRIVER/KPD_program.o
                 0x00002560                KPD_GetPressedkey
  .text.START_CALC
-                0x0000265a      0x21e ./APP/Calculator_Project/calc.o
+                0x0000265a      0x22e ./APP/Calculator_Project/calc.o
                 0x0000265a                START_CALC
  .text.RESET_CALC
-                0x00002878       0x84 ./APP/Calculator_Project/calc.o
-                0x00002878                RESET_CALC
- .text.main     0x000028fc      0x554 ./APP/Calculator_Project/main.o
-                0x000028fc                main
- .text.libgcc   0x00002e50       0x3e d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
-                0x00002e50                __mulsi3
- .text.libgcc   0x00002e8e       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
-                0x00002e8e                __divmodsi4
- .text.libgcc   0x00002ec4        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00002ec4        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00002ec4       0x44 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00002ec4                __udivmodsi4
- .text.libgcc   0x00002f08       0x38 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00002f08                __prologue_saves__
- .text.libgcc   0x00002f40       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00002f40                __epilogue_restores__
-                0x00002f76                . = ALIGN (0x2)
+                0x00002888       0x84 ./APP/Calculator_Project/calc.o
+                0x00002888                RESET_CALC
+ .text.main     0x0000290c      0x554 ./APP/Calculator_Project/main.o
+                0x0000290c                main
+ .text.libgcc   0x00002e60       0x3e d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00002e60                __mulsi3
+ .text.libgcc   0x00002e9e       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                0x00002e9e                __divmodsi4
+ .text.libgcc   0x00002ed4        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00002ed4        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00002ed4       0x44 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002ed4                __udivmodsi4
+ .text.libgcc   0x00002f18       0x38 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00002f18                __prologue_saves__
+ .text.libgcc   0x00002f50       0x36 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00002f50                __epilogue_restores__
+                0x00002f86                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002f76        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00002f76                exit
-                0x00002f76                _exit
+ .fini9         0x00002f86        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00002f86                exit
+                0x00002f86                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -406,11 +406,11 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002f76        0x4 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00002f86        0x4 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002f7a                _etext = .
+                0x00002f8a                _etext = .
 
-.data           0x00800060      0x162 load address 0x00002f7a
+.data           0x00800060      0x162 load address 0x00002f8a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -502,8 +502,8 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
  *(.bss*)
  *(COMMON)
                 0x008001c2                PROVIDE (__bss_end, .)
-                0x00002f7a                __data_load_start = LOADADDR (.data)
-                0x000030dc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00002f8a                __data_load_start = LOADADDR (.data)
+                0x000030ec                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008001c2        0x0
                 0x008001c2                PROVIDE (__noinit_start, .)
@@ -528,7 +528,7 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x2f34
+.stab           0x00000000     0x2f4c
  *(.stab)
  .stab          0x00000000      0x1f8 ./MCAL/PORT/PORT_program.o
  .stab          0x000001f8      0x660 ./MCAL/DIO/DIO_program.o
@@ -543,9 +543,9 @@ LOAD d:/interfacing_nti/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libg
                                 0xb64 (size before relaxing)
  .stab          0x00002370      0x300 ./HAL/KEYPAD_DRIVER/KPD_program.o
                                 0x498 (size before relaxing)
- .stab          0x00002670      0x42c ./APP/Calculator_Project/calc.o
-                                0x5c4 (size before relaxing)
- .stab          0x00002a9c      0x498 ./APP/Calculator_Project/main.o
+ .stab          0x00002670      0x444 ./APP/Calculator_Project/calc.o
+                                0x5dc (size before relaxing)
+ .stab          0x00002ab4      0x498 ./APP/Calculator_Project/main.o
                                 0x6b4 (size before relaxing)
 
 .stabstr        0x00000000     0x10cc
