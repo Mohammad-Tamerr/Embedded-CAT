@@ -190,6 +190,14 @@ void lcd_show_number(s32 number_copy)
 
 void lcd_show_float(float number)
 {
+    // Check if the number is negative
+    if (number < 0) {
+        // Display the negative sign
+        lcd_send_data('-');
+        // Convert the absolute value of the number to integer and fractional parts
+        number = -number;
+    }
+
     // Convert the floating-point number to integer and fractional parts
     int integer_part = (int)number;
     int fractional_part = (int)((number - integer_part) * 100); // Assume 2 decimal places
@@ -200,9 +208,18 @@ void lcd_show_float(float number)
     // Display the decimal point
     lcd_send_data('.');
 
+    // Display leading zeros if necessary for the fractional part
+    if (fractional_part < 10 && fractional_part >= 0) {
+        lcd_send_data('0');
+    }
+
     // Display the fractional part
     lcd_show_number(fractional_part);
 }
+
+
+
+
 
 void lcd_clear (void)
 {

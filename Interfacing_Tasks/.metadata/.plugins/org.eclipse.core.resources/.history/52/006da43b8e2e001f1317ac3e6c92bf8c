@@ -1,0 +1,13 @@
+/*
+ * EXI_interface.h
+ *
+ *  Created on: Jun 20, 2024
+ *      Author: dell
+ */
+
+#ifndef MCAL_EXTERNAL_INTERRUPT_EXI_INTERFACE_H_
+#define MCAL_EXTERNAL_INTERRUPT_EXI_INTERFACE_H_
+
+
+
+#endif /* MCAL_EXTERNAL_INTERRUPT_EXI_INTERFACE_H_ */

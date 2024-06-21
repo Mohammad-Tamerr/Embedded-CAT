@@ -1,40 +1,20 @@
-23:48:55 **** Incremental Build of configuration Debug for project COTS ****
+17:48:31 **** Incremental Build of configuration Debug for project COTS ****
 make all 
-Building file: ../APP/Calculator_Project/calc.c
-Invoking: AVR Compiler
-avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/Calculator_Project/calc.d" -MT"APP/Calculator_Project/calc.o" -c -o "APP/Calculator_Project/calc.o" "../APP/Calculator_Project/calc.c"
-In file included from ../APP/Calculator_Project/calc.c:18:
-d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
-Finished building: ../APP/Calculator_Project/calc.c
- 
-Building target: COTS.elf
-Invoking: AVR C Linker
-avr-gcc -Wl,-Map,COTS.map -mmcu=atmega32 -o "COTS.elf"  ./MCAL/PORT/PORT_program.o  ./MCAL/DIO/DIO_program.o  ./HAL/SWITCH_DRIVER/SWITCH_program.o  ./HAL/SEVEN_SEG_DRIVER/SEVEN_SEG_program.o  ./HAL/LED_DRIVER/LED_program.o  ./HAL/LCD_DRIVER/LCD_program.o  ./HAL/KEYPAD_DRIVER/KPD_program.o  ./APP/Calculator_Project/calc.o ./APP/Calculator_Project/main.o   
-Finished building target: COTS.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S COTS.elf  >"COTS.lss"
-Finished building: COTS.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex COTS.elf  "COTS.hex"
-Finished building: COTS.hex
- 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega32 COTS.elf
 AVR Memory Usage
 ----------------
 Device: atmega32
 
-Program:   12524 bytes (38.2% Full)
+Program:   12408 bytes (37.9% Full)
 (.text + .data + .bootloader)
 
-Data:        354 bytes (17.3% Full)
+Data:        336 bytes (16.4% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-23:48:56 Build Finished (took 1s.137ms)
+17:48:31 Build Finished (took 194ms)
 

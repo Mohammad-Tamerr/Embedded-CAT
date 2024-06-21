@@ -21,11 +21,14 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 APP/Calculator_Project \
+APP/EXTI_TEST \
 HAL/KEYPAD_DRIVER \
 HAL/LCD_DRIVER \
 HAL/LED_DRIVER \
 HAL/SEVEN_SEG_DRIVER \
 HAL/SWITCH_DRIVER \
 MCAL/DIO \
+MCAL/External_Interrupt \
+MCAL/GIE \
 MCAL/PORT \
 

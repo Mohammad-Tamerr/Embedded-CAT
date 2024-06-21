@@ -1,3 +1,4 @@
+
 /*
  * calc.c
  *
@@ -37,7 +38,8 @@ void START_CALC(void)
     lcd_clear();
 }
 
-void RESET_CALC ( s32 * NUM_1 , s32 * NUM_2 , u8 * OP , s32 * RES , u8 * OP_FLAG ,u8 *FLOAT_FLAG )
+void RESET_CALC ( s32 * NUM_1 , s32 * NUM_2 , u8 * OP , s32 * RES , u8 * OP_FLAG ,
+		u8 *FLOAT_FLAG ,u8 * N_FLAG1  , u8 * N_FLAG2 , u8 * NUM_1_END)
 {
     *NUM_1 = 0;
     *NUM_2 = 0;
@@ -45,5 +47,8 @@ void RESET_CALC ( s32 * NUM_1 , s32 * NUM_2 , u8 * OP , s32 * RES , u8 * OP_FLAG
     *RES = 0;
     *OP_FLAG = 0;
     *FLOAT_FLAG = 0 ;
+    *N_FLAG1 = 0 ;
+    *N_FLAG2 = 0 ;
+    * NUM_1_END = 0 ;
 }
 

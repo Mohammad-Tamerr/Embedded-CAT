@@ -1,0 +1,27 @@
+/*
+ * EXI_program.c
+ *
+ *  Created on: Jun 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+
+#include "../../LIB/BIT_MATH.h"
+#include "../../LIB/STD_TYPES.h"
+
+#include "EXI_config.h"
+#include "EXI_interface.h"
+#include "EXI_private.h"
+#include "EXI_register.h"
+
+void EXI_voidInt0Init(void)
+{
+	/* Set Sense Control For INT0 To Falling Edge */
+	SET_BIT(MCUCR,MCUCR_ISC01);
+	SET_BIT(MCUCR,MCUCR_ISC00);
+
+	/* Peripheral Interrupt Enable For INT0 */
+	SET_BIT(GICR,GICR_INT0);
+}
+
+

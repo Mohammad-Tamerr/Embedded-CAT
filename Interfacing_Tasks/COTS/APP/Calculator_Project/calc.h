@@ -1,3 +1,4 @@
+
 /*
  * calc.h
  *
@@ -9,7 +10,10 @@
 #define APP_CALCULATOR_PROJECT_CALC_H_
 
 void START_CALC(void);
-void RESET_CALC ( s32 * NUM_1 , s32 * NUM_2 , u8 * OP , s32 * RES , u8 * OP_FLAG ,u8 *FLOAT_FLAG );
+void RESET_CALC ( s32 * NUM_1 , s32 * NUM_2 , u8 * OP , s32 * RES , u8 * OP_FLAG ,
+		u8 *FLOAT_FLAG ,u8 * N_FLAG1  , u8 * N_FLAG2 , u8 * NUM_1_END);
+
+
 
 #endif /* APP_CALCULATOR_PROJECT_CALC_H_ */
 
