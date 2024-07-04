@@ -39,7 +39,7 @@
 		 3- falling_edge
 		 4- rising_edge
 */
-#define INT1_SENSE   rising_edge
+#define INT1_SENSE   falling_edge
 
 /* Options:
 		 1- ENABLED

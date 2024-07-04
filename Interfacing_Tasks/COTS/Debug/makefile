@@ -12,11 +12,13 @@ RM := rm -rf
 -include MCAL/GIE/subdir.mk
 -include MCAL/External_Interrupt/subdir.mk
 -include MCAL/DIO/subdir.mk
+-include MCAL/ADC/subdir.mk
 -include HAL/SWITCH_DRIVER/subdir.mk
 -include HAL/SEVEN_SEG_DRIVER/subdir.mk
 -include HAL/LED_DRIVER/subdir.mk
 -include HAL/LCD_DRIVER/subdir.mk
 -include HAL/KEYPAD_DRIVER/subdir.mk
+-include APP/Ping_Pong/subdir.mk
 -include APP/EXTI_TEST/subdir.mk
 -include APP/Calculator_Project/subdir.mk
 -include subdir.mk

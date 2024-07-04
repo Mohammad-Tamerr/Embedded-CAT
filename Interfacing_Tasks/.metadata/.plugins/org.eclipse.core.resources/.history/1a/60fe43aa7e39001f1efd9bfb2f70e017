@@ -1,0 +1,20 @@
+/*
+ * ping_pong.c
+ *
+ *  Created on: Jul 3, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#include "Ping_Pong.h"
+#include <util/delay.h>
+
+void main (void)
+{
+		Game_VoidIntialization();
+	while(1)
+	{
+		Ball_VoidMovingLeftToRight();
+		Ball_VoidMovingRightToLeft();
+	}
+}
+

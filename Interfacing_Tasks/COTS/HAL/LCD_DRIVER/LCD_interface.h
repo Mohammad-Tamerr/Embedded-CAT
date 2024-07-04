@@ -18,7 +18,7 @@ u8 lcd_send_string (const char* string_copy);
 
 u8 lcd_go_to_xy (u8 x_dimension_copy , u8 y_dimension_copy);
 
-u8 lcd_store_special_character  (u8* pattern_copy, u8 location_number);
+u8 lcd_store_special_character (u8* pattern_copy, u8 location_number);
 
 void lcd_show_special_character (u8 location_number,u8 x_dimension_copy, u8 y_dimension_copy);
 

@@ -1,0 +1,26 @@
+/*
+ * ADC_config.h
+ *
+ *  Created on: Jul 1, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef MCAL_ADC_ADC_CONFIG_H_
+#define MCAL_ADC_ADC_CONFIG_H_
+
+/*
+ *
+ * 	 ADCMUX_REFS1        7                       //reference selection bit1
+	 ADCMUX_REFS0        6                       //reference selection bit0
+	 ADCMUX_ADLAR        5                       //ADC left adjust result
+ */
+
+/*Select the reference voltage for ADC :
+*	Options :  	1-AREF
+*			   	2-AVCC
+*			   	3-INTERNAL_VOLT
+*/
+#define ADC_REF_VOLT	AREF
+
+
+#endif /* MCAL_ADC_ADC_CONFIG_H_ */

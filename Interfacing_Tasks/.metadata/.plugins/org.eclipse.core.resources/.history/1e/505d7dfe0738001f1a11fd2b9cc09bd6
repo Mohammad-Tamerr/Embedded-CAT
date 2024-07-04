@@ -1,0 +1,12 @@
+/*
+ * ADC_porgram.c
+ *
+ *  Created on: Jul 1, 2024
+ *      Author: dell
+ */
+
+
+void ADC_voidInit(void)
+{
+
+}

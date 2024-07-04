@@ -1,0 +1,41 @@
+/*
+ * ADC_config.h
+ *
+ *  Created on: Jul 1, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef MCAL_ADC_ADC_CONFIG_H_
+#define MCAL_ADC_ADC_CONFIG_H_
+
+/*Select the reference voltage for ADC :
+*	Options :  	1-AREF
+*			   	2-AVCC
+*			   	3-INTERNAL_VOLT
+*/
+#define ADC_REF_VOLT	AREF
+
+
+/*Select the left or right adjust for ADC :
+*	Options :  	1-RIGHT_ADJUSTMENT
+*               2-LEFT_ADJUSTMENT
+*/
+#define 	ADC_ADJUSTMET	 RIGHT_ADJUSTMENT
+
+
+/*ADC enable/disable
+ *Options : 1-ENABLED
+ *			2-DISABLED
+ */
+#define ADC_ENABLE				ENABLED
+
+
+/*ADC resolution:
+ *Options : 1- EIGHT_BITS
+ *			2- TEN_BITS
+ */
+#define ADC_RESOLUTION			EIGHT_BITS
+
+
+
+#endif /* MCAL_ADC_ADC_CONFIG_H_ */
