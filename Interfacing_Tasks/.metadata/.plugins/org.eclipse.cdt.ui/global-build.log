@@ -1,5 +1,13 @@
-01:37:37 **** Incremental Build of configuration Debug for project COTS ****
+00:01:01 **** Incremental Build of configuration Debug for project COTS ****
 make all 
+Building file: ../APP/Ping_Pong/main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/Ping_Pong/main.d" -MT"APP/Ping_Pong/main.o" -c -o "APP/Ping_Pong/main.o" "../APP/Ping_Pong/main.c"
+In file included from ../APP/Ping_Pong/main.c:9:
+d:/interfacing_nti/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../APP/Ping_Pong/main.c:37: warning: return type of 'main' is not 'int'
+Finished building: ../APP/Ping_Pong/main.c
+ 
 Building file: ../APP/Ping_Pong/ping_pong.c
 Invoking: AVR Compiler
 avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"APP/Ping_Pong/ping_pong.d" -MT"APP/Ping_Pong/ping_pong.o" -c -o "APP/Ping_Pong/ping_pong.o" "../APP/Ping_Pong/ping_pong.c"
