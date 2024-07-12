@@ -12,11 +12,13 @@
 #include "ADC_private.h"
 #include "ADC_interface.h"
 #include "ADC_register.h"
+#include "../../HAL/LCD_DRIVER/LCD_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
 
-static u16 *ADC_p16Reading = NULL;
-static void (*ADC_pvCallBackNotificationFunc)(void) = NULL;
+static u8 ADC_u8State = IDLE;
+static u16 *ADC_p16Reading;
+static void (*ADC_pvCallBackNotificationFunc)(void);
 
-u8 ADC_u8State = IDLE;
 
 void ADC_voidInit(void)
 {
@@ -150,20 +152,25 @@ u8 ADC_u8StartConversionSynch(u8 Copy_u8Channel , u16 *Copy_p16Reading)
 }
 
 
-
-u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel, u16 *Copy_p16Reading, void (*Copy_pvNotificationFunc)(void))
+u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel, u16 *Copy_p16Reading, void (*Copy_pvNotificationFunc)(void) )
 {
-	u8 Local_u8Error_Status = OK ;
-	if( ((Copy_p16Reading)!=NULL ) && ((Copy_pvNotificationFunc) != NULL) )
+	u8 Local_u8ErrorState = OK;
+
+	if(ADC_u8State == IDLE)
 	{
-		if(ADC_u8State == IDLE)
+		if((Copy_p16Reading == NULL) || (Copy_pvNotificationFunc == NULL))
 		{
+			Local_u8ErrorState = NULL_POINTER;
+		}
+
+		else
+		{
+			GIE_Enable();
 			/*ADC is busy for conversion*/
 			ADC_u8State = BUSY;
 
 			/*Initialize Reading variable globally*/
 			ADC_p16Reading = Copy_p16Reading;
-
 			/*Initialize callback notification function globally*/
 			ADC_pvCallBackNotificationFunc = Copy_pvNotificationFunc;
 
@@ -176,38 +183,43 @@ u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel, u16 *Copy_p16Reading, void (*C
 			/*Start Conversion*/
 			SET_BIT(ADCSRA,ADCSRA_ADSC);
 
-			/*Enable Interrupt*/
+			/*ADC interrupt enable*/
 			SET_BIT(ADCSRA,ADCSRA_ADIE);
 		}
-		else
-		{
-			/*Nothing*/
-		}
 	}
+
 	else
 	{
-		Local_u8Error_Status = NOK ;
+		Local_u8ErrorState = NOK;
 	}
-	return 	Local_u8Error_Status;
+
+	return Local_u8ErrorState;
 }
+
 
 void __vector_16 (void) __attribute__((signal));
 void __vector_16 (void)
 {
-		/*Read ADC*/
-	if(ADC_RESOLUTION == EIGHT_BITS)
-	{
-		*ADC_p16Reading = ADCH ;
-	}
-	else
-	{
-		*ADC_p16Reading = ADC ;
-	}
-			/*ADC State is idle after conversion is completed*/
-			ADC_u8State = IDLE;
-			/*Disable Interrupt*/
-			CLR_BIT(ADCSRA,ADCSRA_ADIE);
-			/*Call the function in APP layer by callback method*/
-			ADC_pvCallBackNotificationFunc();
-}
 
+    // Reading ADC result
+    if (ADC_RESOLUTION == TEN_BITS)
+    {
+        *ADC_p16Reading = ADC;
+    }
+    else if (ADC_RESOLUTION == EIGHT_BITS)
+    {
+        *ADC_p16Reading = ADCH;
+    }
+
+    // ADC State is idle after conversion is completed
+    ADC_u8State = IDLE;
+
+    // Call notification function if assigned
+    if (ADC_pvCallBackNotificationFunc != NULL)
+    {
+        ADC_pvCallBackNotificationFunc();
+    }
+
+    // Clear ADC interrupt flag
+    SET_BIT(ADCSRA, ADCSRA_ADIF);
+}

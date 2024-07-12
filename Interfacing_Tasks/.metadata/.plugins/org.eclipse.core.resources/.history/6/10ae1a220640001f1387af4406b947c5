@@ -1,0 +1,14 @@
+/*
+ * LM35_interface.h
+ *
+ *  Created on: Jul 12, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef HAL_LM35_DRIVER_LM35_INTERFACE_H_
+#define HAL_LM35_DRIVER_LM35_INTERFACE_H_
+
+void Get_Void_Temp_Sync();
+u16 Get_Void_Temp_ASync(void (*Copy_pvNotificationFunc)(void));
+
+#endif /* HAL_LM35_DRIVER_LM35_INTERFACE_H_ */

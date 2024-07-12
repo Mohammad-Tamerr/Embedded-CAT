@@ -15,9 +15,11 @@ RM := rm -rf
 -include MCAL/ADC/subdir.mk
 -include HAL/SWITCH_DRIVER/subdir.mk
 -include HAL/SEVEN_SEG_DRIVER/subdir.mk
+-include HAL/LM35_DRIVER/subdir.mk
 -include HAL/LED_DRIVER/subdir.mk
 -include HAL/LCD_DRIVER/subdir.mk
 -include HAL/KEYPAD_DRIVER/subdir.mk
+-include APP/Temp/subdir.mk
 -include APP/Ping_Pong/subdir.mk
 -include APP/EXTI_TEST/subdir.mk
 -include APP/Calculator_Project/subdir.mk

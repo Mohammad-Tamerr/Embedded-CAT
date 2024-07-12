@@ -1,0 +1,35 @@
+/*
+ * Temp.h
+ *
+ *  Created on: Jul 12, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef APP_TEMP_TEMP_H_
+#define APP_TEMP_TEMP_H_
+
+/*ADC Mood Selection*/
+#define SYNC		0
+#define ASYNCH		1
+
+/*Select the the mood for ADC :
+*	Options :  	1-SYNC
+*			   	2-ASYNCH
+*/
+#define ADC_MOOD	SYNC
+
+* Select the channel :
+*    Options:	1-CHANNEL_ADC0
+*     	 	 	2-CHANNEL_ADC1
+*     	 	    3-CHANNEL_ADC2
+*     	 	 	4-CHANNEL_ADC3
+*     	 	 	5-CHANNEL_ADC4
+*     	 	 	6-CHANNEL_ADC5
+*     	 	 	7-CHANNEL_ADC6
+*     	 	 	8-CHANNEL_ADC7
+*/
+#define ADC_CHANNEL		CHANNEL_ADC0
+
+u16 Show_U8_Temp();
+
+#endif /* APP_TEMP_TEMP_H_ */
