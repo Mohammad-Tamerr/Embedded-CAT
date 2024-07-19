@@ -35,4 +35,5 @@ MCAL/DIO \
 MCAL/External_Interrupt \
 MCAL/GIE \
 MCAL/PORT \
+MCAL/Timers \
 

@@ -1,0 +1,46 @@
+/*
+ * Timers_config.h
+ *
+ *  Created on: Jul 19, 2024
+ *      Author: dell
+ */
+
+#ifndef MCAL_TIMERS_TIMERS_CONFIG_H_
+#define MCAL_TIMERS_TIMERS_CONFIG_H_
+
+#define 	NORMAL				0
+#define 	PWM_PHASE_CORRECT	1
+#define 	CTC					2
+#define 	FAST_PWM			3
+
+#define 	ENABLE				1
+#define 	DISABLE				0
+
+#define     TOGGLE              1
+#define     CLEAR               2
+#define     SET                 3
+
+/*Select Waveform Generation Mode :
+*	Options :  	1-NORMAL
+*			   	2-PWM_PHASE_CORRECT
+*			   	3-CTC
+*			   	4-FAST_PWM
+*/
+#define 	Waveform_Generation_Mode	Normal
+
+/*Select Force Output Compare Mode :
+*	Options :  	1-ENABLE
+*			   	2-DISABLE
+*/
+#define 	Output_Compare_Mode			DISABLE
+
+/*Select Compare Match Output Mode (OC0 behavior):
+*	Options :  	1-Normal
+*			   	2-TOGGLE
+*			   	3-CLEAR
+*			   	4-SET
+*/
+#define 	OC0_behavior			Normal
+
+
+#endif /* MCAL_TIMERS_TIMERS_CONFIG_H_ */
