@@ -1,0 +1,141 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "Traffic_Light.h"
+
+int main(void)
+{
+    // Initialize traffic light system
+    Init_voidTrafficLightSystem();
+
+    while (1)
+    {
+        if (mode == 0) // Normal Mode
+        {
+            switch (state)
+            {
+                case 0: // Car Green
+                    DIO_Set_Pin_Value(CAR_GREEN_PORT, CAR_GREEN_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_LOW);
+                    break;
+                case 1: // Car Yellow
+                    DIO_Set_Pin_Value(CAR_GREEN_PORT, CAR_GREEN_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_LOW);
+                    break;
+                case 2: // Car Red
+                    DIO_Set_Pin_Value(CAR_GREEN_PORT, CAR_GREEN_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_LOW);
+                    break;
+                case 3: // Car Yellow
+                    DIO_Set_Pin_Value(CAR_GREEN_PORT, CAR_GREEN_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_LOW);
+                    break;
+                case 4: // Car Green
+                    DIO_Set_Pin_Value(CAR_GREEN_PORT, CAR_GREEN_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                    DIO_Set_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN, DIO_PIN_LOW);
+                    DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_LOW);
+                    break;
+            }
+        }
+        else // Pedestrian Mode
+        {
+            switch (PED_mode)
+            {
+                case 1: // Initial pedestrian mode
+                    if (state == 2) // Car red LED is on
+                    {
+                    	DIO_Set_Pin_Value(PED_RED_PORT,PED_RED_PIN,DIO_PIN_LOW);
+                        DIO_Set_Pin_Value(CAR_RED_PORT, CAR_RED_PIN, DIO_PIN_HIGH);
+                        DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_HIGH);
+                    }
+                    else // Car green is on
+                    {
+                    	DIO_Set_Pin_Value(CAR_GREEN_PORT,CAR_GREEN_PIN, DIO_PIN_LOW);
+                        DIO_Set_Pin_Value(PED_RED_PORT, PED_RED_PIN, DIO_PIN_HIGH);
+                        DIO_Toggle_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN);
+                    }
+                    break;
+                case 2: // Pedestrian mode state 2
+                	if(state == 2)
+                	{
+                		DIO_Set_Pin_Value(CAR_GREEN_PORT,CAR_GREEN_PIN, DIO_PIN_LOW);
+                		DIO_Set_Pin_Value(CAR_RED_PORT,CAR_RED_PIN,DIO_PIN_LOW);
+                		DIO_Set_Pin_Value(PED_GREEN_PORT,PED_GREEN_PIN,DIO_PIN_HIGH);
+                	}
+                	else
+                	{
+                		DIO_Set_Pin_Value(PED_RED_PORT,PED_RED_PIN,DIO_PIN_LOW);
+                	}
+                    DIO_Toggle_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN);
+                    DIO_Toggle_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN);
+                    break;
+                case 3:
+                	if(state == 2)
+                	{
+                		DIO_Set_Pin_Value(PED_RED_PORT,PED_RED_PIN,DIO_PIN_HIGH);
+                		DIO_Set_Pin_Value(CAR_GREEN_PORT,CAR_RED_PIN,DIO_PIN_HIGH);
+                	}
+                	else
+                	{
+                		DIO_Set_Pin_Value(CAR_RED_PORT,CAR_RED_PIN,DIO_PIN_HIGH);
+                		DIO_Set_Pin_Value(PED_GREEN_PORT,PED_GREEN_PIN,DIO_PIN_HIGH);
+                	}
+                    break;
+                case 4: // Pedestrian green LED on
+                	if(state==2)
+                	{
+                		break;
+                	}
+                	else
+                	{
+                        DIO_Toggle_Pin_Value(CAR_YELLOW_PORT, CAR_YELLOW_PIN);
+                        DIO_Toggle_Pin_Value(PED_YELLOW_PORT, PED_YELLOW_PIN);
+                        DIO_Set_Pin_Value(PED_GREEN_PORT, PED_GREEN_PIN, DIO_PIN_HIGH);
+                	}
+                	break;
+                case 5 :
+                	if(state==2)
+                	{
+                		break;
+                	}
+                	else
+                	{
+                		DIO_Set_Pin_Value(PED_RED_PORT,PED_RED_PIN,DIO_PIN_HIGH);
+                		DIO_Set_Pin_Value(CAR_GREEN_PORT,CAR_RED_PIN,DIO_PIN_HIGH);
+                	}
+            }
+        }
+    }
+}

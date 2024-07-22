@@ -1,0 +1,28 @@
+/*
+ * Traffic_Light.h
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_
+#define APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_
+
+
+
+void initTrafficLights(void);
+
+void initExternalInterrupt(void);
+
+void normalMode(void);
+
+void pedestrianMode(void);
+
+//void InitSystem(void);
+//
+//void NormalMode(void);
+//
+//void PedestrianMode(void);
+
+
+#endif /* APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_ */

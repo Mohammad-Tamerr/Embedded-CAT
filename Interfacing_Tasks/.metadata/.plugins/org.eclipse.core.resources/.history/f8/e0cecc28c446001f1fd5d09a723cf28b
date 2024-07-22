@@ -1,0 +1,116 @@
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "trafficlight.h"
+
+// Define constants for modes
+#define NORMAL_MODE       0
+#define PEDESTRIAN_MODE   1
+
+// Define global variables
+volatile char mode = NORMAL_MODE;  // Variable to store the current mode
+void (*Timer_CallBackNotificationFunc)(void) = NULL;  // Pointer to callback function
+void (*switch_CallBackNotificationFunc)(void) = NULL;  // Pointer to callback function
+
+// Function to initialize the system (ports, interrupts, timers)
+void InitSystem(void)
+{
+    // Initialize Port
+    PORT_voidInit();
+    /*Initialize Sense control of Int2 */
+    EXI_voidInt2Init();
+ 	/*Enable global interrupt*/
+   	GIE_Enable();
+    /*Enable Int2 pin specific interrupt*/
+    EXI_IntEnable(5);
+    switch_CallBackNotificationFunc = PedestrianMode ;
+    EXI_SetCallBackINT2(switch_CallBackNotificationFunc);
+
+    // Initialize Timer0 in CTC mode with prescaler 1024
+    TIMER0_u8Init(CTC, NORMAL, TIMER_DIV_BY_1024);
+
+    // Set Timer0 compare match value
+    TIMER0_voidSetCompMatchVal(150);
+
+    // Set Timer0 compare match callback
+    TIMER_u8SetCallBack(TIMER0_OUTPUT_COM_INT, NormalMode);
+}
+
+void NormalMode(void)
+{
+    static u8 compare_match_counter1 = 0;
+    compare_match_counter1++;
+    static char counter = 0;
+    // Turn off all pedestrian LEDs
+    DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_0, DIO_PIN_LOW); // Red pedestrian LED
+    DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_3, DIO_PIN_LOW); // Yellow pedestrian LED
+    DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_6, DIO_PIN_LOW); // Green pedestrian LED
+
+    if (compare_match_counter1 == 23)
+    {
+        switch (counter)
+        {
+            case 0:
+                // Turn on car green LED and turn off car yellow and red LEDs
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_HIGH); // Green car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_LOW);  // Yellow car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_LOW);  // Red car LED
+
+                counter++;
+                break;
+
+            case 1:
+                // Turn on car yellow LED and turn off car green and red LEDs
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_LOW);  // Green car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_HIGH);  // Yellow car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_LOW);  // Red car LED
+
+                counter++;
+                break;
+
+            case 2:
+                // Turn on car red LED and turn off car green and yellow LEDs
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_LOW);  // Green car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_LOW);  // Yellow car LED
+                DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_HIGH); // Red car LED
+
+                counter = 0;
+                break;
+        }
+        compare_match_counter1 = 0;
+    }
+}
+
+void PedestrianMode(void)
+{
+
+	static u8 compare_match_counter2 = 0;
+
+	static u8 RED_LED_CAR = 0 ;
+	static u8 YELLOW_LED_CAR = 0 ;
+	static u8 GREEN_LED_CAR = 0 ;
+
+	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_0,&RED_LED_CAR);
+	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_3,&YELLOW_LED_CAR);
+	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_6,&GREEN_LED_CAR);
+
+	if (compare_match_counter2 == 23)
+	{
+		if(RED_LED_CAR == 1)
+		{
+			DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_HIGH); // Red car LED
+			DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_6, DIO_PIN_HIGH); // Green PRED LED
+		}
+	}
+	compare_match_counter2++ ;
+}
+
+
+
+

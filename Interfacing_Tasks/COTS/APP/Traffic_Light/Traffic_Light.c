@@ -1,0 +1,104 @@
+/*
+ * Traffic_Light.c
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "Traffic_Light.h"
+
+volatile char mode = 0; // 0 for Normal Mode, 1 for Pedestrian Mode
+volatile char state = 0; // Traffic light state
+volatile char PED_mode = 0; // Pedestrian mode state
+
+void (*Timer_CallBackNotificationFunc)(void) = NULL;
+void (*switch_CallBackNotificationFunc)(void) = NULL;
+
+void Init_voidTrafficLightSystem(void)
+{
+    /* Initialize Port */
+    PORT_voidInit();
+    /* Initialize Timer0 to generate an interrupt every 5 seconds */
+    TIMER0_u8Init(CTC, NORMAL, TIMER_DIV_BY_8);
+
+    /* Adjust this value to get 5-second intervals */
+    TIMER0_voidSetCompMatchVal(250);
+    Timer_CallBackNotificationFunc = Timer_voidISR;
+    TIMER_u8SetCallBack(TIMER0_OUTPUT_COM_INT, Timer_CallBackNotificationFunc);
+
+    // Initialize External Interrupt on INT2 for the pedestrian button
+    EXI_voidInt2Init();
+
+    // Enable global interrupts
+    GIE_Enable();
+
+    // Set call back for switch
+    switch_CallBackNotificationFunc = Button_voidISR;
+    EXI_SetCallBackINT2(switch_CallBackNotificationFunc);
+}
+
+void Timer_voidISR(void)
+{
+    static u16 Timer_Counter = 0;
+    Timer_Counter++;
+    if (Timer_Counter == 1980)
+    {
+        Timer_Counter = 0;
+        if (mode == 0) // Normal Mode
+        {
+            state = (state + 1) % 4;
+        }
+        else // Pedestrian Mode
+        {
+            if (PED_mode == 1) // Transition state
+            {
+                PED_mode = 2; // Enter pedestrian mode state 2
+            }
+            else if (PED_mode == 2) // Pedestrian mode state 2
+            {
+                PED_mode = 3; // Blink yellow LEDs
+            }
+            else if (PED_mode == 3) // Blink yellow LEDs
+            {
+                PED_mode = 4; // Pedestrian green LED on
+            }
+            else if (PED_mode == 4)
+            {
+            	PED_mode = 5;
+            }
+            else if (PED_mode == 5) // Pedestrian green LED on
+            {
+                mode = 0; // Return to normal mode
+                state = 1;
+                PED_mode = 0;
+            }
+        }
+    }
+}
+
+void Button_voidISR(void)
+{
+    if (mode == 0) // Normal Mode
+    {
+        if (state == 2) // Car red LED is on
+        {
+            mode = 1; // Switch to Pedestrian Mode
+            PED_mode = 1; // Pedestrian mode state 1
+        }
+        else
+        {
+            mode = 1; // Switch to Pedestrian Mode
+            PED_mode = 1; // Pedestrian mode state 1
+            state = 0; // Reset state to start from green
+        }
+    }
+}

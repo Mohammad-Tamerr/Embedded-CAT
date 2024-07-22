@@ -24,6 +24,7 @@ APP/Calculator_Project \
 APP/EXTI_TEST \
 APP/Ping_Pong \
 APP/Temp \
+APP/Traffic_Light \
 HAL/KEYPAD_DRIVER \
 HAL/LCD_DRIVER \
 HAL/LED_DRIVER \

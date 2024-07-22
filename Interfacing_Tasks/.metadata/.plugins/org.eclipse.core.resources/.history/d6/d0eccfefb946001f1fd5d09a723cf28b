@@ -1,0 +1,39 @@
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "trafficlight.h"
+
+#define NORMAL_MODE       0
+#define PEDESTRIAN_MODE   1
+
+void (*Timer_CallBackNotificationFunc)(void) = NULL;  // Pointer to callback function
+volatile char mode ;  // Variable to store the current mode
+
+int main(void)
+{
+    // Initialize the system (ports, interrupts, timers)
+    InitSystem();
+
+    while (1)
+    {
+        if (mode == NORMAL_MODE)
+        {
+            // Set the callback for Timer0 Compare Match Interrupt to NormalMode function
+            Timer_CallBackNotificationFunc = NormalMode;
+            TIMER_u8SetCallBack(TIMER0_OUTPUT_COM_INT, Timer_CallBackNotificationFunc);
+        }
+        else if (mode == PEDESTRIAN_MODE)
+        {
+            // Execute pedestrian mode logic
+            Pedestrian_Mode();
+        }
+    }
+
+    return 0;
+}

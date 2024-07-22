@@ -1,0 +1,17 @@
+/*
+ * Traffic_Light.h
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#ifndef APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_
+#define APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_
+
+void Init_voidTrafficLightSystem(void);
+
+void Timer_voidISR(void);
+
+void Button_voidISR(void);
+
+#endif /* APP_TRAFFIC_LIGHT_TRAFFIC_LIGHT_H_ */

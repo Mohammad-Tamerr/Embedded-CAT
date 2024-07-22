@@ -1,0 +1,19 @@
+#include "../../LIB/STD_TYPES.h"
+#include "trafficlight.h"
+
+int main(void)
+{
+    // Initialize the system (ports, interrupts, timers)
+    InitSystem();
+
+    while (1)
+    {
+        if (mode == PEDESTRIAN_MODE)
+        {
+            // Execute pedestrian mode logic
+            PedestrianMode();
+        }
+    }
+
+    return 0;
+}

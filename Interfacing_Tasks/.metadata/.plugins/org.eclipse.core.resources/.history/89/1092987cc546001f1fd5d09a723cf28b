@@ -1,0 +1,25 @@
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "trafficlight.h"
+
+int main(void)
+{
+    // Initialize the system (ports, interrupts, timers)
+    InitSystem();
+    while (1)
+    {
+    	if(GET_BIT(DIO_PORT_B,DIO_PIN_2))
+    	{
+
+    	}
+    }
+
+    return 0;
+}

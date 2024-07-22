@@ -1,0 +1,233 @@
+/*
+ * Traffic_Light.c
+ *
+ *  Created on: Jul 20, 2024
+ *      Author:  Mohammad Tamer
+ */
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "Traffic_Light.h"
+
+volatile char mode  = 0  ; 		    // 0 for Normal Mode, 1 for Pedestrian Mode
+volatile char state = 0 ; 			// Traffic light state
+char PED_mode  = 0  ;
+
+void (*Timer_CallBackNotificationFunc)(void) = NULL;
+void (*switch_CallBackNotificationFunc)(void) = NULL;
+
+void Init_voidTrafficLightSystem(void)
+{
+		/*Initialize Port*/
+		PORT_voidInit();
+		/*Initialize Timer0 to generate an interrupt every 5 seconds*/
+		TIMER0_u8Init(CTC, NORMAL, TIMER_DIV_BY_1024);
+
+		/*Adjust this value to get 5-second intervals*/
+		TIMER0_voidSetCompMatchVal(150);
+		Timer_CallBackNotificationFunc = Timer_voidISR;
+		TIMER_u8SetCallBack(TIMER0_OUTPUT_COM_INT,Timer_CallBackNotificationFunc);
+
+		// Initialize External Interrupt on INT2 for the pedestrian button
+		EXI_voidInt2Init();
+
+		// Enable global interrupts
+		GIE_Enable();
+
+		//Set call back for switch
+		switch_CallBackNotificationFunc = Button_voidISR ;
+		EXI_SetCallBackINT2(switch_CallBackNotificationFunc);
+}
+
+void Timer_voidISR(void)
+{
+	static u8 Timer_Counter = 0;
+	Timer_Counter++;
+	if(Timer_Counter == 23)
+	{
+		Timer_Counter = 0 ;
+		 if (mode == 0)
+		 {
+			 state ++ ;
+			if (state > 3)
+			{
+				state = 0;
+			}
+		 }
+		 else //mode==1
+		 {
+			if (((PED_mode == 0 )&& (state==2)))
+			{
+				PED_mode = 2;
+				PED_mode++;
+			}
+			else if (PED_mode > 3)
+			{
+				state = 0;
+				mode  = 0;  // Switch back to Normal Mode
+				PED_mode = 0;
+			}
+			else if ( (PED_mode == 1 ) )
+			{
+				state ++ ;
+				PED_mode ++;
+			}
+		 }
+	}
+}
+
+void Button_voidISR(void)
+{
+    if (mode == 0)  // cars mode
+    {
+        if (state == 2)
+        {
+            // If cars' Red LED is on, switch to Pedestrian Mode immediately
+            mode = 1;
+            PED_mode = 0;
+        }
+        else
+        {
+            // Otherwise, switch to Pedestrian Mode with wait
+            mode  = 1  ;
+            PED_mode = 1;
+            state = 0  ;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//void InitSystem(void)
+//{
+	/*Initialize Port*/
+	//PORT_voidInit();
+
+//	/*Initialize INT2 Interrupt*/
+//	EXI_voidInt2Init();
+//
+//	/*Initialize Sense control of Int1 */
+//	EXI_voidInt2Init();
+//
+//	/*Enable global interrupt*/
+//	GIE_Enable();
+//
+//	/*Enable Int0 pin specific interrupt*/
+//	EXI_IntEnable(5);
+//
+//	switch_CallBackNotificationFunc = PedestrianMode ;
+//	EXI_SetCallBackINT2(switch_CallBackNotificationFunc);
+//
+//	/* Initialize Timer0 in CTC mode with prescaler 1024*/
+//	TIMER0_u8Init(CTC, NORMAL, TIMER_DIV_BY_8);
+//
+//	/* Set Timer0 compare match value*/
+//	TIMER0_voidSetCompMatchVal(250);
+//}
+//
+//void NormalMode(void)
+//{
+//	static u32 compare_match_counter1 = 0;
+//	static char counter = 0 ;
+//	// Turn off all pedestrian LEDs
+//	DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_0, DIO_PIN_LOW); // Red pedestrian LED
+//	DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_3, DIO_PIN_LOW); // Yellow pedestrian LED
+//	DIO_Set_Pin_Value(DIO_PORT_D, DIO_PIN_6, DIO_PIN_LOW); // Green pedestrian LED
+//
+//	if (compare_match_counter1 == 1900)
+//	{
+//		switch (counter)
+//		{
+//			case 0:
+//				// Turn on car green LED and turn off car yellow and red LEDs
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_HIGH); // Green car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_LOW);  // Yellow car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_LOW);  // Red car LED
+//
+//				counter++;
+//				break;
+//
+//			case 1:
+//				// Turn on car yellow LED and turn off car green and red LEDs
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_LOW);  // Green car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_HIGH); // Yellow car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_LOW);  // Red car LED
+//
+//				counter++;
+//				break;
+//
+//			case 2:
+//				// Turn on car red LED and turn off car green and yellow LEDs
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_6, DIO_PIN_LOW);  // Green car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_3, DIO_PIN_LOW);  // Yellow car LED
+//				DIO_Set_Pin_Value(DIO_PORT_A, DIO_PIN_0, DIO_PIN_HIGH); // Red car LED
+//
+//				counter = 0;
+//				break;
+//		}
+//		compare_match_counter1 = 0;
+//	}
+//	compare_match_counter1++;
+//}
+//
+//void PedestrianMode(void)
+//{
+//	static u8 compare_match_counter2 = 0;
+//	compare_match_counter2++ ;
+//	static char RED_LRD_CAR ;
+//	static char YELLOW_LRD_CAR ;
+//	static char GREEN_LRD_CAR ;
+//
+//	static char RED_LRD_PRED ;
+//	static char YELLOW_LRD_PRED ;
+//	static char GREEN_LRD_PRED ;
+//
+//	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_0,&RED_LRD_CAR);
+//	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_3,&YELLOW_LRD_CAR);
+//	DIO_Get_Pin_VALUE(DIO_PORT_A,DIO_PIN_6,&GREEN_LRD_CAR);
+//
+//	DIO_Get_Pin_VALUE(DIO_PORT_D,DIO_PIN_0,&RED_LRD_PRED);
+//	DIO_Get_Pin_VALUE(DIO_PORT_D,DIO_PIN_3,&YELLOW_LRD_PRED);
+//	DIO_Get_Pin_VALUE(DIO_PORT_D,DIO_PIN_6,&GREEN_LRD_PRED);
+//
+//	if(compare_match_counter2 == 23)
+//	{
+//		if(RED_LRD_CAR == 1)
+//		{
+//			DIO_Set_Pin_Value(DIO_PORT_A,DIO_PIN_0,DIO_PIN_HIGH);
+//			DIO_Set_Pin_Value(DIO_PORT_D,DIO_PIN_6,DIO_PIN_HIGH);
+//		}
+//	}
+//}
+
+
+

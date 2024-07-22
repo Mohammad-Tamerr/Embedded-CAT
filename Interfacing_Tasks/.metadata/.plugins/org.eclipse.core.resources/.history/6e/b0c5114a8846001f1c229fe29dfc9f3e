@@ -1,0 +1,32 @@
+/*
+ * Trafic_Light.c
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+/*Including Libraries*/
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+/*Including MCAL Layer Drivers*/
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+/*Including HAL Layer Drivers*/
+#include "../../HAL/LCD_DRIVER/LCD_interface.h"
+#include "../../HAL/LM35_DRIVER/LM35_interface.h"
+
+#include "Trafic_Light.h"
+
+void Get_voidSwitch_Status (void)
+{
+    if ( GET_BIT(DIO_PORT_C, DIO_PIN_0) == 0) // Check if the switch is pressed (assuming active low)
+    {
+        DIO_Set_Pin_Value(DIO_PORT_A,DIO_PIN_0,DIO_PIN_HIGH); // Turn on the LED
+    }
+    else
+    {
+    	DIO_Set_Pin_Value(DIO_PORT_A,DIO_PIN_0,DIO_PIN_LOW); // Turn off the LED
+    }
+}

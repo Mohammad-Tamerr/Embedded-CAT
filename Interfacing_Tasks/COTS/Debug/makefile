@@ -20,6 +20,7 @@ RM := rm -rf
 -include HAL/LED_DRIVER/subdir.mk
 -include HAL/LCD_DRIVER/subdir.mk
 -include HAL/KEYPAD_DRIVER/subdir.mk
+-include APP/Traffic_Light/subdir.mk
 -include APP/Temp/subdir.mk
 -include APP/Ping_Pong/subdir.mk
 -include APP/EXTI_TEST/subdir.mk

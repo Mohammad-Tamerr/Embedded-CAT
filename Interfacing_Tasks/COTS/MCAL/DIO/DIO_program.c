@@ -124,7 +124,7 @@ u8 DIO_Set_Port_Value(u8 port_copy  , u8  value_copy  )
 
 }
 
-u8 DIO_Get_Pin_VALUE(u8 port_copy , u8 pin_copy , u8* Pin_Value  )
+u8 DIO_Get_Pin_VALUE(u8 port_copy , u8 pin_copy , char* Pin_Value  )
 {
 	u8 Local_Error_Status =  FUNCTION_IS_OK ;
 	if( (Pin_Value!=NULL) && (pin_copy <= 7) )
@@ -144,4 +144,27 @@ u8 DIO_Get_Pin_VALUE(u8 port_copy , u8 pin_copy , u8* Pin_Value  )
 	}
 	return Local_Error_Status ;
 
+}
+
+u8 DIO_Toggle_Pin_Value(u8 port_copy, u8 pin_copy)
+{
+    u8 Local_Error_Status = FUNCTION_IS_OK;
+
+    if(pin_copy <= 7)
+    {
+        switch(port_copy)
+        {
+            case DIO_PORT_A: TOGGLE_BIT(PORT_A, pin_copy); break;
+            case DIO_PORT_B: TOGGLE_BIT(PORT_B, pin_copy); break;
+            case DIO_PORT_C: TOGGLE_BIT(PORT_C, pin_copy); break;
+            case DIO_PORT_D: TOGGLE_BIT(PORT_D, pin_copy); break;
+            default: Local_Error_Status = FUNCTION_NOT_OK;
+        }
+    }
+    else
+    {
+        Local_Error_Status = FUNCTION_NOT_OK;
+    }
+
+    return Local_Error_Status;
 }

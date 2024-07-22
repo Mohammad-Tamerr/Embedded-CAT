@@ -1,0 +1,57 @@
+/*
+ * trafficlight.c
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: Mohammad Tamer
+ */
+
+#include "../../LIB/STD_TYPES.h"
+#include "../../LIB/BIT_MATH.h"
+
+#include "../../MCAL/PORT/PORT_interface.h"
+#include "../../MCAL/DIO/DIO_interface.h"
+#include "../../MCAL/Timers/Timers_interface.h"
+#include "../../MCAL/External_Interrupt/EXI_interface.h"
+#include "../../MCAL/GIE/GIE_interface.h"
+
+#include "trafficlight.h"
+
+
+
+#define NORMAL_MODE       0
+#define PEDESTRIAN_MODE   1
+
+char mode;
+void (*Timer_CallBackNotificationFunc)(void) = NULL;
+
+int main(void)
+{
+    /* Initialize Port */
+    PORT_voidInit();
+    /*Enable General Purpose Interrupt*/
+    GIE_Enable();
+    /* Initialize Timer0 in CTC mode with prescaler 1024 */
+    TIMER0_u8Init(CTC, NORMAL, TIMER_DIV_BY_1024);
+    TIMER0_voidSetCompMatchVal(150);
+    while(1)
+    {
+    	DIO_Get_Pin_VALUE(DIO_PORT_B, DIO_PIN_2, &mode);
+    	if(mode == NORMAL_MODE)
+    	{
+    		Timer_CallBackNotificationFunc = NormalMode;
+    	    /* Set the callback for Timer0 Compare Match Interrupt */
+    	    TIMER_u8SetCallBack(TIMER0_OUTPUT_COM_INT, Timer_CallBackNotificationFunc);
+    	}
+    	else
+    	{
+    		/*NOTHING*/
+    	}
+    }
+
+    return 0;
+}
+
+
+
+
+

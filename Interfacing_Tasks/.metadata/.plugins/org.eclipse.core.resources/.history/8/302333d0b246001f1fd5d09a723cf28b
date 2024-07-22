@@ -1,0 +1,17 @@
+/*
+ * trafficlight.h
+ *
+ *  Created on: Jul 20, 2024
+ *      Author: dell
+ */
+
+#ifndef APP_TRAFFIC_LIGHT_TRAFFICLIGHT_H_
+#define APP_TRAFFIC_LIGHT_TRAFFICLIGHT_H_
+
+void NormalModeInit(void);
+
+void NormalMode(void);
+
+void NormalModeInit(void);
+
+#endif /* APP_TRAFFIC_LIGHT_TRAFFICLIGHT_H_ */
